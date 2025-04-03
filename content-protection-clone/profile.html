@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản | FPT Play</title>
+    <link rel="icon" href="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fpt-orange: #FF6B35;
+            --fpt-dark: #1A1A1A;
+            --fpt-light: #F5F5F5;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg" class="h-10 w-10 rounded-full mr-3" alt="FPT Play Logo">
+                <span class="text-2xl font-bold text-[var(--fpt-orange)]">FPT Play</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">Trang chủ</a>
+                <a href="movies.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">Phim</a>
+                <a href="tvshows.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">TV Show</a>
+                <a href="live.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">Truyền hình</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="profile.html" class="flex items-center">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" class="w-8 h-8 rounded-full">
+                </a>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-700 text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Sidebar -->
+        <div class="md:col-span-1">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" class="w-24 h-24 rounded-full mb-4">
+                    <h3 class="text-xl font-bold">Nguyễn Văn A</h3>
+                    <p class="text-gray-600 text-sm">Thành viên từ 01/2023</p>
+                </div>
+                <nav class="mt-8 space-y-2">
+                    <a href="#" class="block px-4 py-2 bg-[var(--fpt-orange)] text-white rounded-md">Thông tin tài khoản</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Lịch sử xem</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Gói dịch vụ</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Cài đặt</a>
+                    <a href="login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Đăng xuất</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="md:col-span-3 space-y-8">
+            <!-- Account Info -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-6">Thông tin tài khoản</h2>
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Họ và tên</label>
+                        <input type="text" value="Nguyễn Văn A" class="w-full border rounded-md px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email" value="nguyenvana@example.com" class="w-full border rounded-md px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Số điện thoại</label>
+                        <input type="tel" value="0987654321" class="w-full border rounded-md px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Ngày sinh</label>
+                        <input type="date" value="1990-01-01" class="w-full border rounded-md px-3 py-2">
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="bg-[var(--fpt-orange)] text-white px-6 py-2 rounded-md hover:bg-orange-600 transition">
+                            Cập nhật thông tin
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Subscription -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-6">Gói dịch vụ</h2>
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-md">
+                    <div>
+                        <h3 class="font-semibold">FPT Play VIP</h3>
+                        <p class="text-sm text-gray-600">Hết hạn vào 30/12/2023</p>
+                    </div>
+                    <button class="bg-[var(--fpt-orange)] text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
+                        Gia hạn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <img src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg" class="h-10 w-10 rounded-full mr-3">
+                    <span class="text-xl font-bold">FPT Play</span>
+                </div>
+                <p class="text-gray-400">Nền tảng giải trí trực tuyến hàng đầu Việt Nam</p>
+            </div>
+            <!-- Footer sections same as index.html -->
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-800 text-center text-gray-400">
+            <p>© 2023 FPT Play Clone. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
