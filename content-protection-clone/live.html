@@ -3,145 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live TV | FPT Play</title>
+    <title>New & Popular | Netflix Vietnam</title>
     <link rel="icon" href="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        netflix: {
+                            red: '#E50914',
+                            dark: '#141414',
+                            light: '#F5F5F5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --fpt-orange: #FF6B35;
-            --fpt-dark: #1A1A1A;
-            --fpt-light: #F5F5F5;
-        }
         body {
             font-family: 'Roboto', sans-serif;
-        }
-        .live-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background-color: #FF0000;
+            background-color: #141414;
             color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 1; }
+        .nav-scrolled {
+            background-color: #141414;
+        }
+        .content-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        .tab-active {
+            color: white;
+            border-bottom: 2px solid #E50914;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body>
     <!-- Navigation -->
-    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <nav class="fixed w-full z-50 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg" class="h-10 w-10 rounded-full mr-3" alt="FPT Play Logo">
-                <span class="text-2xl font-bold text-[var(--fpt-orange)]">FPT Play</span>
+                <img src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg" 
+                     class="h-8 w-8 rounded mr-3" alt="Netflix Logo">
+                <span class="text-2xl font-bold text-netflix-red">NETFLIX</span>
             </div>
             <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">Trang chủ</a>
-                <a href="movies.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">Phim</a>
-                <a href="tvshows.html" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">TV Show</a>
-                <a href="live.html" class="text-gray-800 font-medium text-[var(--fpt-orange)]">Truyền hình</a>
-                <a href="#" class="text-gray-800 hover:text-[var(--fpt-orange)] font-medium">Thể thao</a>
+                <a href="index.html" class="text-gray-300 hover:text-white font-medium">Home</a>
+                <a href="tvshows.html" class="text-gray-300 hover:text-white font-medium">TV Shows</a>
+                <a href="movies.html" class="text-gray-300 hover:text-white font-medium">Movies</a>
+                <a href="live.html" class="text-white font-medium">New & Popular</a>
+                <a href="#" class="text-gray-300 hover:text-white font-medium">My List</a>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="bg-[var(--fpt-orange)] text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
-                    Đăng nhập
-                </button>
-                <button class="md:hidden">
-                    <i class="fas fa-bars text-gray-700 text-xl"></i>
-                </button>
+                <div class="relative hidden md:block">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300"></i>
+                    <input type="text" placeholder="Search" 
+                           class="bg-black bg-opacity-50 text-white pl-10 pr-4 py-1 rounded border border-gray-600 focus:outline-none">
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded bg-netflix-red flex items-center justify-center">
+                        <i class="fas fa-user text-white"></i>
+                    </div>
+                    <button class="md:hidden">
+                        <i class="fas fa-bars text-white text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-6 py-8">
-        <h1 class="text-3xl font-bold mb-6">Truyền hình trực tiếp</h1>
-        
-        <!-- Now Playing Section -->
-        <section class="mb-12">
-            <h2 class="text-xl font-semibold mb-4">Đang phát</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Featured Channel -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="https://images.pexels.com/photos/380954/pexels-photo-380954.jpeg" alt="Live TV" class="w-full h-64 object-cover">
-                        <span class="live-badge">LIVE</span>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex items-start">
-                            <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <h3 class="font-bold text-lg">VTV3</h3>
-                                <p class="text-gray-600">Bóng đá: Việt Nam vs Thái Lan</p>
-                                <p class="text-sm text-gray-500 mt-1">20:00 - 22:00</p>
-                            </div>
-                        </div>
-                        <button class="mt-4 w-full bg-[var(--fpt-orange)] text-white py-2 rounded-md hover:bg-orange-600 transition">
-                            Xem ngay
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Channel List -->
-                <div class="bg-white rounded-lg shadow p-4">
-                    <h3 class="font-semibold mb-3">Kênh đang phát</h3>
-                    <div class="space-y-3 max-h-96 overflow-y-auto">
-                        <!-- Channel 1 -->
-                        <div class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer">
-                            <img src="https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg" class="w-10 h-10 rounded-full mr-3">
-                            <div class="flex-1">
-                                <h4 class="font-medium">VTV1</h4>
-                                <p class="text-sm text-gray-600">Thời sự 19h</p>
-                            </div>
-                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">LIVE</span>
-                        </div>
-                        <!-- Add more channels -->
-                    </div>
-                </div>
+    <div class="pt-24 pb-12 px-6">
+        <!-- Tabs -->
+        <div class="max-w-7xl mx-auto mb-8">
+            <div class="flex space-x-8 border-b border-gray-700">
+                <button class="tab-active pb-2 font-medium">New Releases</button>
+                <button class="text-gray-400 pb-2 font-medium hover:text-white">Coming Soon</button>
+                <button class="text-gray-400 pb-2 font-medium hover:text-white">Top 10</button>
+                <button class="text-gray-400 pb-2 font-medium hover:text-white">Trending Now</button>
             </div>
-        </section>
+        </div>
 
-        <!-- All Channels Section -->
-        <section>
-            <h2 class="text-xl font-semibold mb-4">Tất cả kênh</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                <!-- Channel 1 -->
-                <div class="bg-white rounded-lg p-4 text-center shadow hover:shadow-md transition cursor-pointer">
-                    <div class="relative mx-auto w-16 h-16 mb-2">
-                        <img src="https://images.pexels.com/photos/1591061/pexels-photo-1591061.jpeg" class="w-full h-full rounded-full object-cover">
-                        <span class="live-badge">LIVE</span>
+        <!-- New Releases -->
+        <div class="max-w-7xl mx-auto mb-12">
+            <h2 class="text-xl md:text-2xl font-bold mb-6">New Releases</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Content Card 1 -->
+                <div class="content-card transition duration-300 relative">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg" 
+                             alt="New Release 1" 
+                             class="w-full h-64 object-cover">
+                        <div class="absolute top-2 left-2 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">
+                            NEW
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-3">
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="text-xs bg-gray-800 px-1 rounded">HD</span>
+                                    <span class="text-xs bg-gray-800 px-1 rounded">5.1</span>
+                                </div>
+                                <span class="text-xs bg-gray-800 px-1 rounded">TV-MA</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-medium">VTV1</h3>
-                    <p class="text-gray-600 text-sm">Tin tức</p>
+                    <div class="mt-2">
+                        <h3 class="font-semibold truncate">The Witcher: Season 3</h3>
+                        <p class="text-gray-400 text-sm">Added June 29</p>
+                    </div>
                 </div>
-                <!-- Add more channel cards -->
+                <!-- Add 5 more content cards -->
             </div>
-        </section>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="max-w-7xl mx-auto mb-12">
+            <h2 class="text-xl md:text-2xl font-bold mb-6">Coming This Week</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Content Card 1 -->
+                <div class="content-card transition duration-300 relative">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg" 
+                             alt="Coming Soon 1" 
+                             class="w-full h-64 object-cover">
+                        <div class="absolute top-2 left-2 bg-netflix-red text-white text-xs font-bold px-2 py-1 rounded">
+                            JULY 4
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-3">
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="text-xs bg-gray-800 px-1 rounded">4K</span>
+                                    <span class="text-xs bg-gray-800 px-1 rounded">Dolby</span>
+                                </div>
+                                <span class="text-xs bg-gray-800 px-1 rounded">TV-14</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="font-semibold truncate">Stranger Things: Final Season</h3>
+                        <p class="text-gray-400 text-sm">Coming July 4</p>
+                    </div>
+                </div>
+                <!-- Add 5 more content cards -->
+            </div>
+        </div>
+
+        <!-- Top 10 -->
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-xl md:text-2xl font-bold mb-6">Top 10 in Vietnam Today</h2>
+            <div class="space-y-4">
+                <!-- Top Item 1 -->
+                <div class="flex items-center bg-gray-900 rounded overflow-hidden hover:bg-gray-800 transition">
+                    <div class="w-16 flex-shrink-0 text-2xl font-bold text-netflix-red flex items-center justify-center">
+                        1
+                    </div>
+                    <div class="flex-grow flex items-center p-4">
+                        <img src="https://images.pexels.com/photos/4065189/pexels-photo-4065189.jpeg" 
+                             alt="Top 1" 
+                             class="w-16 h-16 object-cover rounded mr-4">
+                        <div>
+                            <h3 class="font-semibold">Extraction 2</h3>
+                            <p class="text-gray-400 text-sm">Action, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="w-24 flex-shrink-0 text-right pr-4">
+                        <span class="text-yellow-400"><i class="fas fa-crown"></i> #1</span>
+                    </div>
+                </div>
+                <!-- Add 9 more top items -->
+            </div>
+        </div>
     </div>
 
-    <!-- Footer (Same as index.html) -->
-    <footer class="bg-gray-900 text-white py-12 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
-            <div>
-                <div class="flex items-center mb-4">
-                    <img src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg" class="h-10 w-10 rounded-full mr-3">
-                    <span class="text-xl font-bold">FPT Play</span>
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-8">
+                <div class="flex items-center">
+                    <img src="https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg" 
+                         class="h-8 w-8 rounded mr-3">
+                    <span class="text-xl font-bold text-netflix-red">NETFLIX</span>
                 </div>
-                <p class="text-gray-400">Nền tảng giải trí trực tuyến hàng đầu Việt Nam</p>
             </div>
-            <!-- Footer sections same as index.html -->
-        </div>
-        <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-800 text-center text-gray-400">
-            <p>© 2023 FPT Play Clone. All rights reserved.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white mb-4">About</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Company</a></li>
+                        <li><a href="#" class="hover:text-white">Jobs</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white">Account</a></li>
+                        <li><a href="#" class="hover:text-white">Terms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white mb-4">Account</h4>
+                    <ul class="space-y-2">
+                        <li><a href="login.html" class="hover:text-white">Sign In</a></li>
+                        <li><a href="#" class="hover:text-white">Create Account</a></li>
+                        <li><a href="#" class="hover:text-white">Manage Profiles</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white mb-4">Social</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>© 2023 Netflix Clone. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Tab switching
+        const tabs = document.querySelectorAll('.flex.space-x-8 button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('tab-active'));
+                tabs.forEach(t => t.classList.add('text-gray-400'));
+                tab.classList.add('tab-active');
+                tab.classList.remove('text-gray-400');
+            });
+        });
+    </script>
 </body>
 </html>
